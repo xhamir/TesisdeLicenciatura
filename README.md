@@ -1,6 +1,6 @@
 # Tesis de Licenciatura
 
-¿Es posible analizar la cuantificación de temblores de la mano que tiene una persona con el Leap Motion Controller?
+"¿Es posible con la herramienta Leap Motion Controller analizar la cuantificación de temblores de la mano que tiene una persona?"
 
 La idea es poder analizar de manera efectiva con un software que trabaje en conjunto con el hardware leap motion controller la cantidad de temblores que presentara una persona en su mano al realizar un ejercicio previsto.
 
