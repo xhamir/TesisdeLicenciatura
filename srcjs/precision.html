@@ -1,0 +1,26 @@
+<html>
+  <head>
+    <title>Leap JavaScript</title>
+    <script src="../libjs/leap-0.6.3.min.js"></script>
+    <script>
+    function checkLibrary() {
+      // Setup Leap loop with frame callback function
+      var controllerOptions = {enableGestures: true};
+
+      Leap.loop(controllerOptions, function(frame) {
+        // Body of callback function
+        var frameString = "Frame ID: " + frame.id  + "<br />"
+                + "Timestamp: " + frame.timestamp + " &micro;s<br />"
+                + "Hands: " + frame.hands.length + "<br />"
+                + "Fingers: " + frame.fingers.length + "<br />"
+                + "Tools: " + frame.tools.length + "<br />"
+                + "Gestures: " + frame.gestures.length + "<br />";
+        console.log(frameString);
+      })
+    } 
+    </script>
+  </head>
+  <body onload="checkLibrary()">
+    <h1>Leap JavaScript</h1>
+  </body>
+</html>
