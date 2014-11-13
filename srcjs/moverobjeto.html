@@ -1,0 +1,57 @@
+<html>
+  <head>
+    <title>Leap JavaScript</title>
+    <script src="../js/leap-0.6.3.min.js"></script>
+    <script src="../js/leap-plugins-0.1.8.min.js"></script>
+    <script>
+    function leapshow() {
+      var points = {};
+
+      Leap.loop(function(frame) {
+
+        frame.hands.forEach(function(hand, index) {
+          
+          var point = ( points[index] || (points[index] = new point()) );    
+          point.setTransform(hand.screenPosition(), hand.roll());
+          
+        });
+        
+      }).use('screenPosition', {scale: 0.25});
+
+
+      var point = function() {
+        var point = this;
+        var img = document.createElement('img');
+        img.src = '../img/punto.png';
+        img.style.position = 'absolute';
+        img.onload = function () {
+          point.setTransform([window.innerWidth/2,window.innerHeight/2], 0);
+          document.body.appendChild(img);
+        }
+        
+        point.setTransform = function(position, rotation) {
+
+          img.style.left = position[0] - img.width  / 2 + 'px';
+          img.style.top  = position[1] - img.height / 2 + 'px';
+
+        img.style.transform = 'rotate(' + -rotation + 'rad)';
+        
+          img.style.webkitTransform = img.style.MozTransform = img.style.msTransform =
+          img.style.OTransform = img.style.transform;
+
+        };
+
+      };
+
+      points[0] = new point();
+
+      Leap.loopController.setBackground(true)
+      
+    } 
+    </script>
+  </head>
+  <body onload="leapshow()">
+    <h1>Leap JavaScript</h1>
+ 
+  </body>
+</html>
